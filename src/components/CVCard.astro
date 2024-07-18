@@ -1,0 +1,26 @@
+---
+import Card from "./Card/index.astro";
+import Button from "./Button.astro";
+import { Icon } from "astro-icon/components";
+
+const PDF = "/Joao_Marinho_CV.pdf";
+---
+
+<Card colSpan="md:col-span-2 lg:col-span-1" rowSpan="md:row-span-3" title="CV">
+  <div class="flex flex-col h-full">
+    <h2 class="text-gray-500 mb-3 md:mb-0">
+      View and download my resume by clicking the button below.
+    </h2>
+    <div class="flex items-center justify-center h-full w-full">
+      <a href={PDF} aria-label="CV pdf" target="_blank">
+        <Button size="small">
+          <div class="flex items-center justify-center gap-2 h-full w-full">
+            <p class="text-base whitespace-nowrap">Download resume</p>
+            <Icon name="ri:file-3-fill" class="w-5 h-5" />
+          </div>
+          <span class="sr-only">Resume pdf</span>
+        </Button>
+      </a>
+    </div>
+  </div>
+</Card>

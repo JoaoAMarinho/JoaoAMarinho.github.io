@@ -1,0 +1,47 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import ProjectRow from "../../components/Project/ProjectRow.astro";
+import { getSortedProjects } from "../../utils/contentCollections";
+
+const projects = await getSortedProjects();
+---
+
+<script>
+  import { timeline, type TimelineDefinition } from "motion";
+  import { loaderAnimation } from "../../utils/constants";
+
+  const sequence = [loaderAnimation];
+
+  timeline(sequence as TimelineDefinition);
+</script>
+
+<Layout
+  title="João's Projects"
+  description="TODO: Software developer with strong focus on the user experience animations and micro interactions"
+>
+  <main
+    class="text-white w-screen h-screen flex flex-col justify-start items-start max-w-3xl mx-auto p-8"
+  >
+    <a
+      href="/"
+      class="bg-neutral-900 hover:bg-neutral-800 px-4 py-2 mb-8 border-1 border-solid border-neutral-600 rounded-lg"
+      >Back</a
+    >
+    <h1 class="text-4xl font-bold mb-4 text-neutral-100">Projects</h1>
+    {
+      projects.length != 0 ? (
+        <ul class="w-full">
+          {projects.map((project) => (
+            <ProjectRow
+              title={project.data.title || "No title"}
+              date={project.data.pubDate || new Date()}
+              url={project.slug}
+            />
+          ))}
+        </ul>
+      ) : (
+        <p>Wow! Feels a little empty in here...</p>
+      )
+    }
+  </main>
+</Layout>

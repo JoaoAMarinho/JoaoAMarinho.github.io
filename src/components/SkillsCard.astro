@@ -1,0 +1,51 @@
+---
+import Card from "./Card/index.astro";
+import Tooltip from "./Tooltip/index";
+
+const SKILLS: { src: string; message: string }[] = [
+  {
+    src: "devicon-c-plain",
+    message: "C",
+  },
+  {
+    src: "devicon-cplusplus-plain",
+    message: "C++",
+  },
+  {
+    src: "devicon-python-plain",
+    message: "Python",
+  },
+  {
+    src: "devicon-pytorch-original",
+    message: "PyTorch",
+  },
+  {
+    src: "devicon-ros-original",
+    message: "ROS",
+  },
+  {
+    src: "devicon-javascript-plain",
+    message: "JavaScript",
+  },
+  {
+    src: "devicon-git-plain",
+    message: "Git",
+  },
+];
+---
+
+<Card colSpan="md:col-span-2" rowSpan="md:row-span-2" title="Skills">
+  <div class="flex items-center mt-2">
+    <ul class="grid gap-4 grid-cols-4 lg:grid-cols-6 w-full h-full">
+      {
+        SKILLS.map((skill) => (
+          <li class="flex items-center justify-center">
+            <Tooltip client:visible message={skill.message} >
+              <i class={`${skill.src} text-4xl`} />
+            </Tooltip>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</Card>
