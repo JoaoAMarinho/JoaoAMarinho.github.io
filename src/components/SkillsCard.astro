@@ -34,13 +34,13 @@ const SKILLS: { src: string; message: string }[] = [
 ];
 ---
 
-<Card colSpan="md:col-span-2" rowSpan="md:row-span-2" title="Skills">
+<Card colSpan="md:col-span-2" rowSpan="md:row-span-3" title="Skills">
   <div class="flex items-center mt-2">
-    <ul class="grid gap-4 grid-cols-4 lg:grid-cols-6 w-full h-full">
+    <ul class="grid gap-y-8 gap-x-4 grid-cols-4 lg:grid-cols-6 w-full h-full">
       {
         SKILLS.map((skill) => (
           <li class="flex items-center justify-center">
-            <Tooltip client:visible message={skill.message} >
+            <Tooltip client:visible message={skill.message}>
               <i class={`${skill.src} text-4xl`} />
             </Tooltip>
           </li>

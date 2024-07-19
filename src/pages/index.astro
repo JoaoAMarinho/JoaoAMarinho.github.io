@@ -31,7 +31,7 @@ import SkillsCard from "../components/SkillsCard.astro";
 
 <Layout
   title="João Marinho - Portfolio"
-  description="TODO: Small personal description about me, passions, and tools."
+  description="Explore the portfolio of M.Sc. João Marinho in Informatics and Computing Engineering. View skills, namely programming languages and software tools, detailed projects, and his resume."
 >
   <main
     class="text-white m-auto p-2 grid gap-2 max-w-6xl overflow-hidden relative w-full sm:p-4 sm:gap-2 md:grid-cols-2 md:gap-3 md:p-6 lg:h-screen lg:grid-rows-8 lg:grid-cols-4 lg:gap-4 lg:max-h-[800px]"
@@ -39,20 +39,18 @@ import SkillsCard from "../components/SkillsCard.astro";
     <IntroCard />
     <AboutMe />
     <CVCard />
+    <SkillsCard />
     <Card
-      colSpan="md:col-span-2" rowSpan="md:row-span-1"
+      colSpan="md:col-span-1"
+      rowSpan="md:row-span-1"
       title="Projects"
       href="/projects"
     />
 
-    <SkillsCard />
-
     <!-- Copyright -->
-    <Card colSpan="md:col-span-1" rowSpan="md:row-span-1">
+    <Card colSpan="lg:col-span-4" rowSpan="md:row-span-1">
       <div class="flex items-center justify-center h-full">
-      <p class="text-xs">
-        © 2024 · João Marinho
-      </p>
+        <p class="text-xs">© 2024 · João Marinho</p>
       </div>
     </Card>
   </main>

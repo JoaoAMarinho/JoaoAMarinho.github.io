@@ -18,6 +18,7 @@ interface Props {
 }
 
 const { title, description, page, slug, frontmatter } = Astro.props;
+console.log(frontmatter);
 const image = `${Astro.url.origin}/share-image.jpg`;
 
 const getSchema = () => {
