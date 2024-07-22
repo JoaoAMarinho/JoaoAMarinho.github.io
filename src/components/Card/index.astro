@@ -3,6 +3,7 @@ import { Icon } from "astro-icon/components";
 import Content from "./Content.astro";
 
 interface Props {
+  style?: string;
   title?: string;
   body?: string;
   colSpan?: string;
@@ -12,13 +13,14 @@ interface Props {
   width?: string;
 }
 
-const { title, body, colSpan, rowSpan, href, colorText } = Astro.props;
+const { title, body, colSpan, rowSpan, href, colorText, style } = Astro.props;
 ---
 
 <div
-  class={`card h-full sm:h-auto group transform-y-[-40%] bg-darkslate-500 shadow-lg rounded-lg p-4 border border-darkslate-100 hover:border-primary-500 align-start flex-none justify-start relative transform perspective-1200 w-full transition duration-75 ease-in-out col-span-1 ${
-    colSpan || "md:col-span-2"
-  } ${rowSpan || ""}`}
+  class={`card h-full sm:h-auto group transform-y-[-40%] bg-darkslate-500 shadow-lg rounded-lg p-4 border
+  border-darkslate-100 hover:border-primary-500 align-start flex-none justify-start relative transform 
+  perspective-1200 w-full transition duration-75 ease-in-out col-span-1 
+  ${colSpan || "md:col-span-2"} ${rowSpan || ""} ${style || ""}`}
 >
   {
     href ? (
