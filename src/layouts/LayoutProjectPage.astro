@@ -2,12 +2,14 @@
 import { formatDate } from "../utils/helpers";
 import type { MarkdownLayoutProps } from "astro";
 import BasicLayout from "./BasicLayout.astro";
+import { Icon } from "astro-icon/components";
 
 type Props = MarkdownLayoutProps<{
   title: string;
   description: string;
   pubDate: string;
   minutesRead: string;
+  link?: string;
 }>;
 
 const { slug } = Astro.params;
@@ -28,7 +30,22 @@ const { frontmatter } = Astro.props;
       >Back</a
     >
     <div class="my-10">
-      <h1 class="text-5xl font-semibold">{frontmatter.title}</h1>
+      <h1 class="text-5xl font-semibold">
+        {frontmatter.title}
+        {
+          frontmatter.link && (
+            <a
+              href={frontmatter.link}
+              class="text-white hover:text-gray-400 inline-flex w-6 h-6"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Icon name="ri:links-fill" class="h-6" />
+            </a>
+          )
+        }
+      </h1>
+
       <div class="flex justify-between pt-4 text-gray-500 text-sm">
         <p>{formatDate(new Date(frontmatter.pubDate))}</p>
         <p>{frontmatter.minutesRead}</p>
@@ -37,5 +54,6 @@ const { frontmatter } = Astro.props;
     <article class="prose prose-p:text-red-500 prose-slate prose-invert">
       <slot />
     </article>
+    <div class="pb-20"></div> <!-- Extra padding -->
   </main>
 </BasicLayout>

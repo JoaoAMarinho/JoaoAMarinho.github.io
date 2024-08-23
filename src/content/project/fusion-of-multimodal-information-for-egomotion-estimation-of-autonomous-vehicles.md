@@ -1,0 +1,21 @@
+---
+layout: ../../layouts/LayoutProjectPage.astro
+title: "Fusion of Multimodal Information for Egomotion Estimation of Autonomous Vehicles"
+description: "This project explores the integration of Deep Learning with Multimodal Odometry to improve egomotion estimation in autonomous vehicles. By combining visual and depth data, the proposed model achieves enhanced accuracy and robustness, even under challenging conditions."
+pubDate: 2024-08-23
+category: "dissertation"
+link: "https://hdl.handle.net/10216/161044"
+---
+
+**Autonomous driving** promises to transform transportation by improving safety, promoting environmental sustainability, and driving economic growth. A key technology enabling this transformation is **egomotion estimation** — the process by which a vehicle estimates its own movement relative to its surroundings. This capability is essential for accurate localisation, navigation, and obstacle avoidance.
+
+Traditional approaches like Visual Odometry (VO) and Point Cloud Odometry (PCO) have achieved accurate pose estimation using either visual imagery or point cloud data. However, these single-modality systems can struggle under challenging conditions such as varying lighting or harsh weather. To overcome these limitations, researchers have developed Multimodal Odometry, which combines data from multiple sensors to improve accuracy and robustness. While effective, this approach introduces complexities in managing the diverse characteristics of different sensors.
+In recent years, **Machine Learning (ML)**, and particularly **Deep Learning (DL)**, has emerged as a powerful tool for handling complex scenarios across various domains, including computer vision. However, its application in Multimodal Odometry is still underexplored, offering an exciting opportunity to advance egomotion estimation.
+
+My dissertation focused on leveraging DL to process multimodal sensor data and predict 3 Degrees of Freedom (DoF) relative poses. The proposed end-to-end solution used two ResNet-based backbones to extract detailed representations from high-resolution images, combining optical flow with depth information. The pose estimation module, composed of three Multilayer Perceptrons (MLPs), was designed to regress each of the 3DoF values independently. By merging features before the pose estimation step, the architecture followed an intermediate fusion approach.
+
+The model was trained and evaluated using real-world driving scenarios from the KITTI dataset, comparing it against various state-of-the-art methods, both geometric and learning-based, utilising single and multimodal data. The evaluation included challenging environments such as densely vegetated roads, transitioning from countryside to suburban areas, and narrow paved roads with light traffic. I assessed the model’s performance based on individual predictions, global errors, and its ability to generalise using artificially degraded data. This involved introducing noise such as blur, Gaussian noise, and brightness/contrast adjustments to image data, and adding Gaussian noise to depth data.
+
+The results were promising. The proposed model outperformed DeepVO by up to $65\%$ in translational error and $73\%$ in rotational error. Additionally, it competed effectively with state-of-the-art geometric methods, showing comparable performance in translation Relative Pose Error (RPE) across many training sequences and in the tested sequence 10, with a minimal error of $0.06m$. The model also maintained robust performance under degraded data conditions, with a maximum discrepancy of $0.01m$ in translation and $0.03°$ in rotation RPE. These findings demonstrate the model’s strong ability to handle heterogeneous sensor data and its resilience to various environmental challenges.
+
+This work highlights the potential of Deep Learning to enhance the accuracy and reliability of egomotion estimation, paving the way for safer and more efficient autonomous driving systems.
