@@ -6,6 +6,9 @@ import icon from "astro-icon";
 
 import solidJs from "@astrojs/solid-js";
 import { remarkReadingTime } from "./src/utils/ remark-reading-time.mjs";
+import remarkMath from "remark-math";
+import rehypeKatex from 'rehype-katex'
+
 
 // https://astro.build/config
 export default defineConfig({
@@ -18,7 +21,15 @@ export default defineConfig({
     icon(),
   ],
   markdown: {
-    remarkPlugins: [remarkReadingTime],
+    remarkPlugins: [remarkReadingTime, remarkMath],
+    rehypePlugins: [
+      [
+        rehypeKatex,
+        {
+          // Katex plugin options
+        }
+      ]
+    ]
   },
   vite: {
     assetsInclude: "**/*.riv",
