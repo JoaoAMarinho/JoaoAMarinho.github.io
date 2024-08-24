@@ -54,6 +54,44 @@ const { frontmatter } = Astro.props;
     <article class="prose prose-p:text-red-500 prose-slate prose-invert">
       <slot />
     </article>
-    <div class="pb-20"></div> <!-- Extra padding -->
+    <!-- Extra padding -->
+    <div class="pb-20"></div>
+
+    <button
+      id="scrollToTopBtn"
+      class="fixed bottom-8 right-8 bg-neutral-800 text-white rounded-full shadow-lg px-3 py-2 hover:bg-neutral-700 transition-opacity opacity-0 pointer-events-none"
+    >
+      ▲
+    </button>
   </main>
+
+  <script>
+    const scrollToTopBtn = document.getElementById("scrollToTopBtn");
+    const rootElement = document.documentElement;
+
+    function handleScroll() {
+      const scrollTotal = rootElement.scrollHeight - rootElement.clientHeight;
+      if (scrollToTopBtn !== null) {
+        if (rootElement.scrollTop / scrollTotal > 0.1) {
+          scrollToTopBtn.classList.remove("opacity-0", "pointer-events-none");
+          scrollToTopBtn.classList.add("opacity-100");
+        } else {
+          scrollToTopBtn.classList.add("opacity-0", "pointer-events-none");
+          scrollToTopBtn.classList.remove("opacity-100");
+        }
+      }
+    }
+
+    function scrollToTop() {
+      rootElement.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    }
+
+    if (scrollToTopBtn !== null) {
+      document.addEventListener("scroll", handleScroll);
+      scrollToTopBtn.addEventListener("click", scrollToTop);
+    }
+  </script>
 </BasicLayout>
